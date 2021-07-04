@@ -28,7 +28,7 @@ echo
 paste <(logo) <(checks)
 echo
 echo -e "########## temperatures ##########\n"
-declare -a arr=($(lsblk -nd --output NAME))
+declare -a arr=($(lsblk -nd --output NAME | grep "sd*"))
 for i in ${arr[@]}; do
  hddtemp /dev/$i
 done
