@@ -1,5 +1,5 @@
 OS details and temperatures using docker container.
-Is used hddtemp and lm-sensors to gather hardware temperatures.
+Hddtemp and lm-sensors are used to gather hardware temperatures.
 
 Dockerhub:
 https://hub.docker.com/r/dion7/os-details
