@@ -7,9 +7,8 @@ https://hub.docker.com/r/dion7/os-details
 
 ```
 $ docker build .
-$ docker ps -a  # get container id
-$ docker run -t -d --rm --privileged=true <container_id>
-$ docker exec -it <container_id> ./checks.sh
+$ docker run --privileged=true <image_id>
+
   ____   _____    _____ _               _               Hostname: 02e703dc9bb1
  / __ \ / ____|  / ____| |             | |              CPU: i5-5200U CPU 2.20GHz x 4
 | |  | | (___   | |    | |__   ___  ___| | _____        OS: ubuntu
