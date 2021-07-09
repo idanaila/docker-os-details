@@ -8,3 +8,5 @@ ADD checks.sh /
 RUN chmod +x /checks.sh
 RUN chmod +x /usr/sbin/hddtemp
 RUN chmod +x /usr/bin/sensors
+
+CMD ["./checks.sh"]
