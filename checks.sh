@@ -30,7 +30,9 @@ echo
 echo -e "########## temperatures ##########\n"
 declare -a arr=($(lsblk -nd --output NAME | grep "sd*"))
 for i in ${arr[@]}; do
- hddtemp /dev/$i
+ var=$(smartctl -a /dev/$i | grep "Temperature_Celsius" | awk '{print $10}')
+ var1=$(smartctl -a /dev/$i | grep "Device Model" | awk '{print $3 $4}')
+ echo "$var1: $var C"
 done
 sensors | grep "Core*" | awk '{print $1, $2, $3}'
 echo -e "\n"
