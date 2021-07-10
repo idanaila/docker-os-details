@@ -1,6 +1,6 @@
 FROM ubuntu
 
-# install hddtemp(HDD temperatures) and sensors (CPU temperatures)
+# install smartctl(HDD temperatures) and sensors(CPU temperatures)
 RUN apt-get update && apt-get -y install debianutils libc6 libcap-ng0 libgcc1 libselinux1 lsb-base smartmontools lm-sensors
 
 # add the script and give permissions
