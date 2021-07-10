@@ -2,8 +2,8 @@
 
 ## Building from Dockerfile
 ```
-$ docker build .
-$ docker run --rm --privileged=true <image_id>
+$ docker build -t idanaila/os-details .
+$ docker run --rm --privileged=true idanaila/os-details
 ```
 ## Pull from Docker Hub
 
