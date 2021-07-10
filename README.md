@@ -21,7 +21,6 @@ $ docker run --privileged=true <image_id>
 
 /dev/sda: KINGSTON SA400S37480G: 33 C
 /dev/sdb: KINGSTON SA400S37240G: 30 C
-/dev/sdc: ST1000LM024 HN-M101MBB:  31 C
 Core 0: +54.0
 Core 1: +53.0
 ```
