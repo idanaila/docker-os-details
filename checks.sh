@@ -14,6 +14,23 @@ EOF
 
 }
 
+function logoo(){
+
+cat << 'EOF'
+  _______                   _____ 
+ |__   __|                 / ____|
+    | | ___ _ __ ___  _ __| (___  
+    | |/ _ \ '_ ` _ \| '_ \\___ \ 
+    | |  __/ | | | | | |_) |___) |
+    |_|\___|_| |_| |_| .__/_____/ 
+                     | |          
+                     |_|          
+
+
+EOF
+
+}
+                    
 function checks(){
 
 echo "Hostname: $(hostname)"
@@ -22,12 +39,14 @@ echo "OS: $(cat /etc/os-release | grep ID= | sed -n 1p | cut -d "=" -f2 | tr '"'
 #echo "OS: $(cat /etc/os-release | grep "PRETTY_NAME" | cut -d "=" -f2 | tr '"' ' ')"
 echo "Memory: $(free -mh | sed -n 2p | awk '{print $3}') / $(free -mh | sed -n 2p | awk '{print $2}')"
 echo "Uptime: $(uptime | awk '{print $3}' | cut -d "," -f1)"
-echo "Users loged: $(w | sed -n '/USER/,/{exit}/p' | tail -n +2 | wc -l)"
+echo "CPU load: $(awk '{u=$2+$4; t=$2+$4+$5; if (NR==1){u1=u; t1=t;} else print ($2+$4-u1) * 100 / (t-t1) "%"; }' <(grep 'cpu ' /proc/stat) <(sleep 1;grep 'cpu ' /proc/stat))"
 }
 echo
 paste <(logo) <(checks)
 echo
-echo -e "########## temperatures ##########\n"
+
+function temps(){
+
 declare -a arr=($(lsblk -nd --output NAME | grep "sd*"))
 for i in ${arr[@]}; do
  var=$(smartctl -a /dev/$i | grep "Temperature_Celsius" | awk '{print $10}')
@@ -36,3 +55,7 @@ for i in ${arr[@]}; do
 done
 sensors | grep "Core*" | awk '{print $1, $2, $3}'
 echo -e "\n"
+}
+echo
+paste <(logoo) <(temps)
+echo
